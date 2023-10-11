@@ -134,3 +134,7 @@ input[type='submit']{
   .select-items div:hover, .same-as-selected {
 	background-color: rgba(0, 0, 0, 0.1);
   }
+  .tbody{
+	background-color: rgba(0, 0, 0, 0.1);
+
+  }

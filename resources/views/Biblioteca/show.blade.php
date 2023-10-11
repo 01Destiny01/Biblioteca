@@ -12,30 +12,22 @@
   
   use Illuminate\Support\Facades\DB;
   $libros = DB::select('select * from libros');
-
+  session_start();
 ?>
+@foreach ($libros as $libro)
+    
+
   <div class="padreCard">
     <div class="cardHijo">
-      <p class="card-text">{{print_r($libros[0]->titulo)}}</p>
-      <p class="autorlibro">{{print_r($libros[0]->editorial)}}</p>
+      <p class="card-text">{{$libro->titulo}}</p>
+      <p class="autorlibro">{{$libro->editorial}}</p>
       <a href="/Biblioteca/createPrestamo" class="btnAlquilar">Alquilar</a>
     </div>
-  
-<div class="cardHijo">
-  <p class="card-text">{{print_r($libros[1]->titulo)}}</p>
-  <p class="autorlibro">{{print_r($libros[1]->editorial)}}</p>
-  <a href="/Biblioteca/createPrestamo"  class="btn btn-primary">Alquilar</a>
-</div>
-<div class="cardHijo">
-  <p class="card-text">{{print_r($libros[2]->titulo)}}</p>
-  <p class="autorlibro">{{print_r($libros[2]->editorial)}}</p>
-  
-  <a href="#" class="btn btn-primary">Alquilar</a>
-</div>
-
+        
+    @endforeach
   </div>
 <div class="btn1">
-  <button class="btn btn-primary" type="button">ver prestamos</button>
+  <a href = "/Biblioteca/showLibrosPrestados" type="button">ver prestamos</a>
 </div>
   </div>
 

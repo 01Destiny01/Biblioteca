@@ -29,8 +29,8 @@ Route::get('/home', [App\Http\Controllers\BibliotecaController::class, 'index'])
 Route::get('/Biblioteca/index', [App\Http\Controllers\BibliotecaController::class, 'index']);
 Route::get('/Biblioteca/createPrestamo', [App\Http\Controllers\BibliotecaController::class, 'createPrestamo']);
 Route::get('/Biblioteca/getperfil', [App\Http\Controllers\BibliotecaController::class, 'getperfil']);
-Route::get('/Biblioteca/getlibros', [App\Http\Controllers\BibliotecaController::class, 'getlibros']);
 Route::get('/Biblioteca/showLibros', [App\Http\Controllers\BibliotecaController::class, 'showLibros']);
+Route::get('/Biblioteca/showLibrosPrestados', [App\Http\Controllers\BibliotecaController::class, 'showLibrosPrestados']);
 
 Route::controller(BibliotecaController::class)->group(function(){
 //Route::get('Biblioteca/create','create');

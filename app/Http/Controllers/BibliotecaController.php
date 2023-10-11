@@ -50,4 +50,8 @@ public function createPrestamo(){
 
 
 }
+public function  showLibrosPrestados(){
+
+    return view('Biblioteca.showprestamos');
+}
 }

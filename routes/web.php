@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BibliotecaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,22 +14,40 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-
-
 Route::get('/', function () {
-    return view('home');
+    return view('home', [HomeController::class]);
 })-> name('home');
+Route::middleware(['auth'])->group(function(){
 
-Route::post('solucion', function () {
-    return view('solucion');
-})-> name('solucion');
 
-Route::get('login', function () {
-    return view('login');
-})-> name('login');
+ 
 
-Route::get('informacion', function () {
-    return view('informacion');
-})-> name('informacion');
+});
+
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\BibliotecaController::class, 'index'])->name('home');
+Route::get('/Biblioteca/index', [App\Http\Controllers\BibliotecaController::class, 'index']);
+Route::get('/Biblioteca/createPrestamo', [App\Http\Controllers\BibliotecaController::class, 'createPrestamo']);
+Route::get('/Biblioteca/getperfil', [App\Http\Controllers\BibliotecaController::class, 'getperfil']);
+Route::get('/Biblioteca/getlibros', [App\Http\Controllers\BibliotecaController::class, 'getlibros']);
+Route::get('/Biblioteca/showLibros', [App\Http\Controllers\BibliotecaController::class, 'showLibros']);
+
+Route::controller(BibliotecaController::class)->group(function(){
+//Route::get('Biblioteca/create','create');
+Route::get('Biblioteca/show','show')->name('show');
+
+#Route::get('Biblioteca/index','index');
+
+//Route::get('Biblioteca/show','create');
+
+
+
+});
+
 ?>
+
+
+
+
+
+

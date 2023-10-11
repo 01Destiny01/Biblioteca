@@ -1,15 +1,15 @@
-* {
+/* * {
 	padding: 0;
 	margin: 0;
 	font-family: century gothic;
 	text-align: center;
-}
+} */
 
 form {
-	padding: 50px 20px;
+	padding: auto auto;
 	background-color: #bbb6b657;
 	margin: calc(25% + 100px);
-	margin-top: 70px;
+	margin-top: center;
 	padding-top: 28px;
 	margin-bottom: 30px
 }
@@ -17,12 +17,14 @@ form {
 h1 {
 	text-align: center;
 	padding: 12px;
-	color: #444
+	color: #343a6d !important;
+
 }
 
 input {
 	width: calc(100% - 20px);
 	padding: 9px;
+	margin-left: 150px;
 	margin: auto;
 	margin-top: 12px;
 	font-size: 16px
@@ -74,3 +76,38 @@ input[type='submit']{
 	background: rgb(100, 200, 255);
 	cursor: pointer;
   }
+  .padreCard {
+	
+	display: grid;
+	  justify-content: center;
+	  align-items: center;
+
+
+  }
+  .cardHijo{
+
+	align-self: center;
+	width: 300px;
+	height: auto;
+	margin-bottom: 20px;
+	-webkit-text-fill-color: gold;
+	text-shadow: #000000;
+	background: rgb(55, 109, 148);
+	border-radius: 5px;
+  }
+  .autorlibro{
+	-webkit-text-fill-color: #fff;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+ 

@@ -13,9 +13,16 @@
   
   use Illuminate\Support\Facades\DB;
   $usuarioid = auth()->id();
-  $prestamos = DB::select("select * from prestamos where usuario_id = '$usuarioid'");
+  $prestamos = DB::select("select * from prestamos where id = '$usuarioid'");
   session_start();
-  ?>
+    ?>
+ @if ($prestamos == null)
+     <h1>el usuario no tiene prestamos</h1>
+         
+     @else
+         
+
+
   <table>
    
   @foreach ($prestamos as $prestamo) 
@@ -55,5 +62,6 @@
 
 <h1></h1>
 <h1></h1>
+@endif
 </body>
 </html>

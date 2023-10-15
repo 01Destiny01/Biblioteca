@@ -21,7 +21,7 @@
     <div class="cardHijo">
       <p class="card-text">{{$libro->titulo}}</p>
       <p class="autorlibro">{{$libro->editorial}}</p>
-      <a href="/Biblioteca/createPrestamo" class="btnAlquilar">Alquilar</a>
+      <a href="/Biblioteca/createPrestamo" name = "libroid" value ="{{$libro->id}}" class="btnAlquilar">Alquilar</a>
     </div>
         
     @endforeach

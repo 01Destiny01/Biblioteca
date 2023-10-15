@@ -26,7 +26,7 @@ Route::middleware(['auth'])->group(function(){
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\BibliotecaController::class, 'index'])->name('home');
-Route::get('/Biblioteca/index', [App\Http\Controllers\BibliotecaController::class, 'index']);
+Route::get('/Biblioteca/index', [App\Http\Controllers\BibliotecaController::class, 'index'])->name('biblioteca');
 Route::get('/Biblioteca/createPrestamo', [App\Http\Controllers\BibliotecaController::class, 'createPrestamo']);
 Route::get('/Biblioteca/getperfil', [App\Http\Controllers\BibliotecaController::class, 'getperfil']);
 Route::get('/Biblioteca/showLibros', [App\Http\Controllers\BibliotecaController::class, 'showLibros']);

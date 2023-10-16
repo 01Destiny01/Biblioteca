@@ -15,15 +15,18 @@
   session_start();
 ?>
 @foreach ($libros as $libro)
+<form method="POST" action="{{ route('Biblioteca/show') }}">
+  @csrf
     
 
   <div class="padreCard">
     <div class="cardHijo">
       <p class="card-text">{{$libro->titulo}}</p>
       <p class="autorlibro">{{$libro->editorial}}</p>
-      <a href="/Biblioteca/createPrestamo" name = "libroid" value ="{{$libro->id}}" class="btnAlquilar">Alquilar</a>
+      <input type="hidden" name="libro_id" value="{{ $libro->id }}">
+      <button type="submit">Alquilar</button>
     </div>
-        
+  </form>
     @endforeach
   </div>
 <div class="btn1">

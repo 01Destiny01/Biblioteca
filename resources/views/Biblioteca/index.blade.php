@@ -14,7 +14,7 @@
   
  </li> 
    <li class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-0 shadow-sm" role="presentation"> 
-    <a href="/Biblioteca/showLibros"  <button class="nav-link active rounded-2" id="btnalquiler" name="btnalquiler"
+    <a href="/Biblioteca/show"  <button class="nav-link active rounded-2" id="btnalquiler" name="btnalquiler"
       data-bs-toggle="tab" type="button" role="tab" aria-selected="true">ALQUILAR
       </button> 
    </li> 

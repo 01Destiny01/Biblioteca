@@ -5,13 +5,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
+                <div class="card-header">{{ __('PRESTAMOS') }}</div>
+<iframe src="/Biblioteca/showLibrosPrestados" title="PRESTAMOS">> </iframe>
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                          
-                            
+                   <?php
+                    if (auth()->user()->id != -1) {
+                        header('/home');
+                    } else header('/login');
+                ?>
+                        <div  class="alert alert-success" role="alert">
+                        
                             
                         </div>
                     @endif

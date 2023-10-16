@@ -26,15 +26,16 @@ Route::middleware(['auth'])->group(function(){
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\BibliotecaController::class, 'index'])->name('home');
-Route::get('/Biblioteca/index', [App\Http\Controllers\BibliotecaController::class, 'index'])->name('biblioteca');
-Route::get('/Biblioteca/createPrestamo', [App\Http\Controllers\BibliotecaController::class, 'createPrestamo']);
+//Route::get('/Biblioteca/index', [App\Http\Controllers\BibliotecaController::class, 'index'])->name('biblioteca');
+Route::get('/Biblioteca/create', [App\Http\Controllers\BibliotecaController::class, 'alquilarLibro']);
 Route::get('/Biblioteca/getperfil', [App\Http\Controllers\BibliotecaController::class, 'getperfil']);
-Route::get('/Biblioteca/showLibros', [App\Http\Controllers\BibliotecaController::class, 'showLibros']);
-Route::get('/Biblioteca/showLibrosPrestados', [App\Http\Controllers\BibliotecaController::class, 'showLibrosPrestados']);
+Route::get('/Biblioteca/logout', [App\Http\Controllers\BibliotecaController::class, 'cerrarsesion']);
+Route::match(array('GET','POST'),('/Biblioteca/show'), [App\Http\Controllers\BibliotecaController::class, 'showLibros']);
+Route::match(array('GET','POST'),('/Biblioteca/showLibrosPrestados'), [App\Http\Controllers\BibliotecaController::class, 'showLibrosPrestados'])->name('showPrestamos');
 
 Route::controller(BibliotecaController::class)->group(function(){
 //Route::get('Biblioteca/create','create');
-Route::get('Biblioteca/show','show')->name('show');
+//Route::get('Biblioteca/show','show')->name('show');
 
 #Route::get('Biblioteca/index','index');
 

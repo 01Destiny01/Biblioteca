@@ -23,7 +23,11 @@
           <h5> since {{$user[0]->created_at}}</h5>
           <a href="#"><i class="fa fa-user"></i></a>
           <a href="#"><i class="fa fa-book"></i></a>
-          <p><button>cerrar sesion</button></p>
+          <a class="dropdown-item" href="{{ route('logout') }}"
+   onclick="event.preventDefault();
+                 document.getElementById('logout-form').submit();">
+    {{ __('Logout') }}
+</a>
         </div>
 </body>
 </html>

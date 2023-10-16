@@ -6,12 +6,13 @@
 } */
 
 form {
-	padding: auto auto;
-	background-color: #bbb6b657;
-	margin: calc(25% + 100px);
-	margin-top: center;
-	padding-top: 28px;
-	margin-bottom: 30px
+	width: auto;
+	height: auto;
+
+	
+	
+
+
 }
 body{
 	background-color: #bbb6b657;

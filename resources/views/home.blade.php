@@ -11,8 +11,8 @@
                     @if (session('status'))
                    <?php
                     if (auth()->user()->id != -1) {
-                        header('/home');
-                    } else header('/login');
+                        header('login');
+                    } else header('login');
                 ?>
                         <div  class="alert alert-success" role="alert">
                         

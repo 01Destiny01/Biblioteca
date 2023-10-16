@@ -10,29 +10,26 @@
 <body style=" width:auto; height: auto; text-align:center; " >
   <?php
   
-  use Illuminate\Support\Facades\DB;
-  $libros = DB::select('select * from libros');
-  session_start();
+ use Illuminate\Support\Facades\DB;
+ $libros = DB::select('select * from libros');
+ session_start();
 ?>
-@foreach ($libros as $libro)
-<form method="POST" action="{{ route('Biblioteca/show') }}">
-  @csrf
-    
 
-  <div class="padreCard">
-    <div class="cardHijo">
-      <p class="card-text">{{$libro->titulo}}</p>
-      <p class="autorlibro">{{$libro->editorial}}</p>
-      <input type="hidden" name="libro_id" value="{{ $libro->id }}">
-      <button type="submit">Alquilar</button>
-    </div>
-  </form>
-    @endforeach
-  </div>
-<div class="btn1">
-  <a href = "/Biblioteca/showLibrosPrestados" type="button">ver prestamos</a>
-</div>
-  </div>
+<form method="POST" action="{{ route('alquilar') }}">
+ @csrf
+ @foreach ($libros as $libro)
+
+ <div class="padreCard">
+   <div class="cardHijo">
+     <p class="card-text">{{$libro->titulo}}</p>
+     <p class="autorlibro">{{$libro->editorial}}</p>
+     <input type="button" name="libro_id" value="{{ $libro->id }}"/> 
+     <button type="submit">Alquilar</button>
+   </div>
+   @endforeach
+ </form>
+   
+ </div>
 
 
 <h1></h1>

@@ -52,13 +52,13 @@ public function getperfil(){
 
 public function alquilarLibro(Request $request)
 {
-    $usuario_id=  auth()->id();
-    $libroId = $request->input('libro_id');
-    $prestamo = DB::insert("insert into prestamos(libro_id,usuario_id) values (' $libroId ','$usuario_id ')");
-    print_r($libroId);
+    $usu_id=  auth()->id();
+    $lib_Id = $request->input('libro_id');
+    // $prestamo = DB::insert("insert into prestamos(libro_id,usuario_id) values (' $libroId ','$usuario_id ')");
+    // print_r($libroId);
     $prestamo = new Prestamo;
-    $prestamo->libro_id = $request->input('libro_id');
-    $prestamo->usuario_id = $request->input('usuario_id');
+    $prestamo->libro_id = $request->$lib_Id;
+    $prestamo->usuario_id = $request->$usu_id;
     $prestamo->save();
     return view('Biblioteca.showprestamos');
 

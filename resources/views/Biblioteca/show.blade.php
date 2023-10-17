@@ -15,20 +15,23 @@
  session_start();
 ?>
 
-<form method="POST" action="{{ route('alquilar') }}">
- @csrf
  @foreach ($libros as $libro)
 
+ <form method="POST" action="{{ route('alquilar') }}">
+  @csrf
  <div class="padreCard">
    <div class="cardHijo">
      <p class="card-text">{{$libro->titulo}}</p>
      <p class="autorlibro">{{$libro->editorial}}</p>
-     <input type="button" name="libro_id" value="{{ $libro->id }}"/> 
+     <input type="number"  readonly  name="libro_id" value="{{ $libro->id }}"/> 
      <button type="submit">Alquilar</button>
    </div>
-   @endforeach
  </form>
-   
+ 
+ @endforeach
+
+ 
+ <a href="/home" <button> </button> Volver </a>
  </div>
 
 

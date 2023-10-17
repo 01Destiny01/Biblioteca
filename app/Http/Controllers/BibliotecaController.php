@@ -52,14 +52,30 @@ public function getperfil(){
 
 public function alquilarLibro(Request $request)
 {
-    $usu_id=  auth()->id();
-    $lib_Id = $request->input('libro_id');
+  
+    // $lib_Id = $request->input('libro_id');
     // $prestamo = DB::insert("insert into prestamos(libro_id,usuario_id) values (' $libroId ','$usuario_id ')");
     // print_r($libroId);
-    $prestamo = new Prestamo;
-    $prestamo->libro_id = $request->$lib_Id;
-    $prestamo->usuario_id = $request->$usu_id;
+    $prestamo = new Prestamo; 
+    $prestamo->libro_id = $request['libro_id'];
+    $prestamo->usuario_id = auth()->id();
     $prestamo->save();
+    return view('Biblioteca.show');
+
+
+
+}
+public function DevolverLibro(Request $request)
+{
+    $date = date('Y-m-d H:i:s');
+    $libroId = $request['id'];
+    $registro = Prestamo::where('libro_id',$libroId)->first();
+    if($registro!=null){
+       $registro->update([
+           'fecha_devolucion' => $date
+        ]);
+    } else echo 'este usuario no tiene prestamos';
+
     return view('Biblioteca.showprestamos');
 
 

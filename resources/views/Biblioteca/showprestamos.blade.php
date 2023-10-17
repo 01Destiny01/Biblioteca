@@ -9,59 +9,24 @@
 
 </head>
 <body style=" width:auto; height: auto; text-align:center; " >
-  <?php
-  
-  use Illuminate\Support\Facades\DB;
-  $usuarioid = auth()->id();
-  $prestamos = DB::select("select * from prestamos where id = '$usuarioid'");
-  session_start();
-    ?>
- @if ($prestamos == null)
-     <h1>el usuario no tiene prestamos</h1>
-         
-     @else
-         
-
-
-  <table>
-   
-  @foreach ($prestamos as $prestamo) 
-<table class="table">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td scope="row"></td>
-      <td>{{$prestamo->id}} </td>
-      <td> {{$prestamo->usuario_id}}</td>
-    </tr>
-    <tr>
-      <td scope="row"></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-
-    echo usuario tiene en uso el libro :{{$prestamo->id}} 
-  echo usuario creador: 
-      </th>
-    </thead>
-    <tbody>
-  
-</table>
-@endforeach
-  
-  </div>
-
-
-<h1></h1>
-<h1></h1>
-@endif
+    <?php
+    use Illuminate\Support\Facades\DB;
+     $usuId = auth()->id();
+    $prestamos = DB::select("select l.titulo,l.id from prestamos p, libros l, users u where p.usuario_id = u.id and p.libro_id = l.id and u.id = ' $usuId ' and p.fecha_devolucion is null ");
+      ?>
+ 
+      @foreach ($prestamos as $prestamo)
+     <form method="POST" action="{{ route('DevolverLibro') }}">
+      @csrf
+     <div class="padreCard">
+       <div class="cardHijo">
+         <p class="card-text">{{$prestamo->titulo }}</p>
+         <input type="number"  readonly  name="id" value="{{ $prestamo->id }}"/> 
+         <button type="submit">Devolver</button>
+       </div>
+     </form>
+     @endforeach
+     </div>
+     <a href="/home" <button> </button> Volver </a>
 </body>
 </html>

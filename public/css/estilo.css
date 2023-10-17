@@ -15,7 +15,6 @@ form {
 
 }
 body{
-	background-color: #bbb6b657;
 
 }
 
@@ -33,12 +32,23 @@ input {
 	margin: auto;
 	margin-top: 12px;
 	font-size: 16px
+		
 }
 
 input[type='submit']{
 	background-color: #48e;
 	color: #fff;
 	width: calc(80% - 20px);
+	margin: 0 10%;
+	margin-top: 22px;
+	border: none;
+}
+
+input[type='number']{
+	background-color: rgb(55, 109, 148);
+	color: rgb(55, 109, 148);
+	width: calc(80% - 20px);
+	-webkit-text-fill-color:  rgb(55, 109, 148);
 	margin: 0 10%;
 	margin-top: 22px;
 	border: none;
@@ -78,7 +88,7 @@ input[type='submit']{
   .form button {
 	padding: 0.5em 1em;
 	border: none;
-	background: rgb(100, 200, 255);
+	background: rgb(224, 144, 24);
 	cursor: pointer;
   }
   .padreCard {

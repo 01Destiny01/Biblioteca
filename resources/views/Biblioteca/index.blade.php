@@ -1,7 +1,7 @@
 
  <!DOCTYPE html> 
- <html style="background-image: url('{{ asset('img/bibliotecaimg.jpg')}}'); > 
-  <div id="loading" ">
+ <html style="background-image: url('{{ asset('img/biblio.jpg')}}'); > 
+  <div id="loading>
 <head> 
      <meta charset='utf-8'> 
      <title>Biblioteca</title> 

@@ -27,6 +27,9 @@
      </form>
      @endforeach
      </div>
-     <a href="/home" <button> </button> Volver </a>
+     @if ($prestamos != null)
+         <a href="/home" >Volver </a>
+     @endif
+     
 </body>
 </html>

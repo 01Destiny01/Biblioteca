@@ -14,9 +14,7 @@ form {
 
 
 }
-body{
 
-}
 
 h1 {
 	text-align: center;
@@ -148,6 +146,9 @@ input[type='number']{
   
   button:hover, a:hover {
 	opacity: 0.7;
+  }
+ ul {
+	background-color: #343a6d;
   }
   
 

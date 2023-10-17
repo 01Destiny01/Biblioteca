@@ -31,7 +31,7 @@
  @endforeach
 
  
- <a href="/home" <button> </button> Volver </a>
+ <a href="/home" > Volver </a>
  </div>
 
 

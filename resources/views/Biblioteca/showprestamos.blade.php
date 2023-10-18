@@ -8,7 +8,7 @@
   <link  rel="stylesheet" href= {{asset('css/estilo.css') }}> 
 
 </head>
-<body style=" width:auto; height: auto; text-align:center; " >
+<body  style=" width:auto; height: auto; text-align:center; " >
     <?php
     use Illuminate\Support\Facades\DB;
      $usuId = auth()->id();

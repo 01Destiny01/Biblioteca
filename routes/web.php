@@ -28,6 +28,8 @@ Route::controller(BibliotecaController::class)->group(function(){
     Route::get('/home', [App\Http\Controllers\BibliotecaController::class, 'index'])->name('home');
     //Route::get('/Biblioteca/index', [App\Http\Controllers\BibliotecaController::class, 'index'])->name('biblioteca');
     Route::post('/Biblioteca/create', [App\Http\Controllers\BibliotecaController::class, 'alquilarLibro'])->name('alquilar');
+    Route::get('/Biblioteca/publicar', [App\Http\Controllers\BibliotecaController::class, 'publicarLibro'])->name('publicarLibro');
+    Route::post('/Biblioteca/publicarGuardar', [App\Http\Controllers\BibliotecaController::class, 'storePublicar'])->name('storePublicar');
     Route::post('/Biblioteca/showprestamos', [App\Http\Controllers\BibliotecaController::class, 'DevolverLibro'])->name('DevolverLibro');
     Route::get('/Biblioteca/getperfil', [App\Http\Controllers\BibliotecaController::class, 'getperfil']);
     Route::get('/Biblioteca/logout', [App\Http\Controllers\BibliotecaController::class, 'cerrarsesion']);

@@ -1,12 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Autor;
+use App\Models\autores_libros;
+use App\Models\Libro;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Prestamo;
 use App\Models\Usuario;
 use Illuminate\Auth\Events\Logout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class BibliotecaController extends Controller
 {
@@ -52,19 +56,88 @@ public function getperfil(){
 
 public function alquilarLibro(Request $request)
 {
-  
-    // $lib_Id = $request->input('libro_id');
-    // $prestamo = DB::insert("insert into prestamos(libro_id,usuario_id) values (' $libroId ','$usuario_id ')");
-    // print_r($libroId);
+    $usuarioid = auth()->id();
+    $libroid = $request['libro_id'];
+    $p = DB::select("select * from prestamos where usuario_id = ' $usuarioid 'and libro_id = ' $libroid' ");
+if($p ==null){
     $prestamo = new Prestamo; 
     $prestamo->libro_id = $request['libro_id'];
     $prestamo->usuario_id = auth()->id();
+    
+    
     $prestamo->save();
     return view('Biblioteca.show');
+} else {
+    
+    echo '<script language="javascript">';
+    echo 'alert("error, este libro ya ha sido prestado a este usuario y todavia no ha sido devuelto")';
+    echo '</script>';
+    return view('Biblioteca.show');
+
+};
 
 
 
 }
+
+public function publicarLibro(Request $request)
+{
+    return view('Biblioteca.publicar');
+    
+
+}
+
+public function storePublicar(Request $request) {
+    Log::debug(json_encode($request->all()));
+$validator = Validator::make($request->all(), [
+        'titulo' => 'required|unique:Libros|max:255',
+        'editorial' => 'required|unique:Libros|max:255',
+         'autor' => 'required',
+         'ano_escritura' => 'required|integer|min:1900',
+     ]);
+   
+     if ($validator->fails()) {
+    return redirect('/Biblioteca/publicar')
+                 ->withErrors($validator)
+                 ->withInput();
+     //echo json_encode($validator);
+    //var_dump($validator->messages()); exit;
+     //var_dump("sale", json_encode($validator->messages())); exit;
+     //Log::debug(json_encode($validator));
+     }
+     
+   $autorR =$request['autor'];
+   $autor = DB::table('autores')->where('nombre', $autorR )->first();
+   $idautor = -1;
+   if($autor ==null){
+$au = new Autor;
+$au->nombre = $request['autor'];
+$au->save();
+$autorN = DB::table('autores')->where('nombre', $autorR )->first();
+$idautor = $autorN->id;
+   }elseif($autor!=null){
+$idautor = $autor->id;
+
+
+   }
+     $libro = new Libro; 
+     $libro->titulo = $request['titulo'];
+     $libro->editorial = $request['editorial'];
+     $libro->idAutor = $idautor;
+     $libro->ano_escritura = $request['ano_escritura'];
+     $libro->save();
+     $libroR = DB::table('libros')->where('titulo', $libro->titulo )->first();
+
+     $au_libros = new autores_libros;
+     $au_libros->autor_id = $idautor;
+     $au_libros->libro_id = $libroR->id;
+     $au_libros->save();
+     return view('Biblioteca.index');
+
+}
+
+
+
 public function DevolverLibro(Request $request)
 {
     $date = date('Y-m-d H:i:s');
